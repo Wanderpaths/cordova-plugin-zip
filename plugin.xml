@@ -17,6 +17,7 @@
 
   <platform name="android">
     <source-file src="src/android/Zip.java" target-dir="src/org/apache/cordova" />
+    <framework src="org.apache.commons:commons-compress:1.4" />
 
     <config-file target="res/xml/config.xml" parent="/widget">
       <feature name="Zip">
