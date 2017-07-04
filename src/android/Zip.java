@@ -143,7 +143,6 @@ public class Zip extends CordovaPlugin {
                 }
                 progress.addLoaded(ze.getCompressedSize());
                 updateProgress(callbackContext, progress);
-                zis.closeEntry();
             }
 
             // final progress = 100%
