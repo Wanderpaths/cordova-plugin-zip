@@ -16,6 +16,7 @@ import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaResourceApi.OpenForReadResult;
 import org.apache.cordova.PluginResult;
 import org.apache.commons.compress.archivers.zip.ZipArchiveInputStream;
+import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -110,14 +111,14 @@ public class Zip extends CordovaPlugin {
             }
 
             // The inputstream is now pointing at the start of the actual zip file content.
-            ZipInputStream zis = new ZipArchiveInputStream(inputStream, null, false, true);
+            ZipArchiveInputStream zis = new ZipArchiveInputStream(inputStream, null, false, true);
             inputStream = zis;
 
-            ZipEntry ze;
+            ZipArchiveEntry ze;
             byte[] buffer = new byte[32 * 1024];
             boolean anyEntries = false;
 
-            while ((ze = zis.getNextEntry()) != null)
+            while ((ze = zis.getNextZipEntry()) != null)
             {
                 anyEntries = true;
                 String compressedName = ze.getName();
